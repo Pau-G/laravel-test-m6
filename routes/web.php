@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\SalutacionsController;
+use App\Http\Controllers\AlumneController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +19,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('hola', function() { return "Hola món!"; });
+
+Route::get('nom/{nom}', function($nom) { return "Hola " . $nom; });
+
+Route::get('edat/{edat?}', function($edat = 38){
+    return "La teva edat és " . $edat;
+});
+
+Route::get('salutacio', [SalutacionsController::class, 'index']);
+
+Route::resource('alumne', AlumneController::class);
